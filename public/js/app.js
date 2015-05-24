@@ -8,8 +8,8 @@ angular.module("Sandy", [
     $stateProvider
       .state('app', {
         url:'/',
-        templateUrl:'templates/index.html',
-        controller:'MainCtrl',
+        templateUrl:'templates/main.html',
+        controller:'MainController',
       })
     $urlRouterProvider.otherwise('/');
   });
