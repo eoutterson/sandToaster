@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('sandy',
   ['sandy.main',
    'ui.router',
@@ -11,10 +13,7 @@ angular.module('sandy',
         url:'/',
         templateUrl: 'templates/main.html',
         controller: 'MainController',
-      })
+      });
     $urlRouterProvider.otherwise('/');
   });
-
-
-
 
