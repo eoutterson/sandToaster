@@ -5,22 +5,26 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
   jshint = require('gulp-jshint'),
+  jscs = require('gulp-jscs'),
   rename = require('gulp-rename'),
   notify = require('gulp-notify'),
   del = require('del');
 
-
+gulp.task('lint', function() {
+  return gulp.src('public/js/**/*.js')
+    .pipe(jscs())
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'));
+});
 
 gulp.task('scripts', function() {
   return gulp.src('public/js/**/*.js')
-  .pipe(jshint('.jshintrc'))
-  .pipe(jshint.reporter('default'))
-  .pipe(concat('main.js'))
-  .pipe(gulp.dest('public/dist/js'))
-  .pipe(rename({ suffix: '.min' }))
-  .pipe(uglify())
-  .pipe(gulp.dest('public/dist/js'))
-  .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('public/dist/js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/dist/js'))
+    .pipe(notify({ message: 'Scripts task complete' }));
 });
 
 gulp.task('styles', function() {
@@ -36,5 +40,5 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('default', ['clean'], function() {
-  gulp.start('scripts', 'styles');
+  gulp.start('lint', 'scripts', 'styles');
 });
