@@ -1,5 +1,7 @@
-angular.module("Sandy", [])
-  .controller('MainController', function($scope,$famous){    
+'use strict';
+
+angular.module('sandy.main', [])
+  .controller('MainController', function ($scope, $famous){
     var Transitionable = $famous['famous/transitions/Transitionable'];
     var Timer = $famous['famous/utilities/Timer'];
 
