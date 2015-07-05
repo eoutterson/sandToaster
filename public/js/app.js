@@ -3,11 +3,11 @@
 angular.module('sandy',
   ['sandy.main',
    'ui.router',
-   'famous.angular'
+   'famous.angular',
   ])
-  .run(function(){
+  .run(function() {
   })
-  .config(function ($stateProvider, $urlRouterProvider){
+  .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('app', {
         url:'/',
